@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BOOTSTRAP 101</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Mulai menyusun halaman disini -->
+    <h1>BOOTRAP 101</h1>
+
+    <h1 class="display-1" >My Dashboard 1</h1>
+    <h1 class="display-4" >My Dashboard 4</h1>
+
+    <p class="font-weigt-bold" >Font weight bold</p>
+
+    <p class="font-italic" >
+        Font Italic
+    </p>
+
+    <p class="text-uppercase">
+        Text uppercase
+    </p>
+
+    <p class="text-lowercase">
+        Text lowercase
+    </p>
+
+    <p class="text-capitalize">
+        text capitalize
+    </p>
+
+    <!-- Alignment -->
+    <!-- ALT + Z -->
+    <p class="text-justify">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel corporis voluptatum qui voluptate ipsum fugiat expedita, debitis et ex recusandae laudantium!
+    </p>
+
+    <p class="text-left">
+        Align text left Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis, provident quis.
+    </p>
+    <p class="text-center">
+        Align text center Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos, perspiciatis unde!
+    </p>
+    <p class="text-center">
+        Align text right Lorem ipsum dolor sit amet consectetur adipisicing elit. Facere, saepe earum.
+    </p>
+
+    <!-- Color -->
+    <!-- Tentukan letak kursor pertama -->
+    <!-- Tekan ALT dibarengi meng-click area lainnya -->
+    <!-- Lalu ketikkan kodenya, jika sudah selesai tekan 'Esc' -->
+    <p class="text-center text-primary font-weight-bold  text-capitalize">text primary color</p>
+    <p class="display-4 font-italic text-secondary">Text Secondary Color</p>
+    <p class="text-success">Text Success Color</p>
+    <p class="text-danger">Text Danger Color</p>
+    <p class="text-warning">Text Warning Color</p>
+    <p class="display-3 text-uppercase text-dark">Text Dark Color</p>
+
+    <!-- BOX MODEL -->
+
+    <!-- Block element -->
+    <!-- Sebuah element yang memiliki lebar memenuhi tag parent -->
+    <!-- Block element dapat diatur lebar, tinggi, dan marginnya -->
+    <!-- 
+        Contoh block element : h1 (1- 6) , p , div
+     -->
+
+    <!-- Inline element -->
+    <!-- Sebuah element yang memiliki lebar sesuai konten -->
+    <!-- 
+        Contoh : span , b , i 
+     -->
+
+    <!--
+        Apa itu Element ?
+
+        <h1>My Dashboard</h1>
+
+        tag      : h1
+        content : 'My Dashboard'
+        element : tag + content
+    -->
+    
+    <!-- 
+        Padding : jarak dari kontent ke border
+        padding-top : pt
+        padding-right : pr
+        padding-bottom : pb
+        padding-left : pl
+
+        padding-left and padding-right : px
+        padding-top and padding-bottom : py
+
+        all side : p
+
+        pt-3 : padding bagian atas sebesar 3
+
+        pb-2 : padding bagian bawah sebesar 2
+     -->
+
+     <!-- 
+        margin : jarak dari kontent ke luar element
+        margin-top : mt
+        margin-right : mr
+        margin-bottom : mb
+        margin-left : ml
+
+        margin-left and margin-right : mx
+        margin-top and margin-bottom : my
+
+        all side : m
+
+        mt-3 : margin bagian atas sebesar 3
+
+        mb-2 : margin bagian bawah sebesar 2
+
+        Margin Collapse
+        Dimana margin dua elemen yang bertemu secara 'v e r t i c a l' akan
+        diambil yang paling besa (bukan dijumlahkan)
+
+     -->
+
+     <!-- Margin vertical -->
+
+    <div class="mb-5 pt-3 pl-3 pb-3 text-white bg-primary " >
+        Ini merupakan sebuah konten 1
+    </div>
+
+    <div class="mt-5 mb-4 py-3 text-white bg-secondary " >
+        Ini merupakan sebuah konten 2
+    </div>
+
+    <div class="px-3 my-5 text-white bg-success " >
+        Ini merupakan sebuah konten 3
+    </div>
+
+    <!-- Margin horizontal -->
+    <div style="width: 150px;" class="mr-5 d-inline-block text-white bg-primary " >
+        Ini merupakan sebuah konten 1
+    </div>
+
+    <div style="width: 150px;" class="ml-5 d-inline-block text-white bg-secondary " >
+        Ini merupakan sebuah konten 2
+    </div>
+
+    <div style="width: 150px;" class="d-inline-block text-white bg-success " >
+        Ini merupakan sebuah konten 3
+    </div>
+
+    <!-- FORM -->
+    <form class="mt-5 form-group container">
+        
+        <label for="name">Name</label>
+        <input class="form-control" type="text" id="name">
+
+        <label for="pswd">Password</label>
+        <input class="form-control" type="password" id="pswd" >
+
+        <label for="email">E-Mail</label>
+        <input class="form-control" type="email" id="email" >
+
+        <select class="mt-3 form-control">
+            <optgroup label="Merah">
+                <option>Merah Maroon</option>
+                <option>Merah Muda</option>
+            </optgroup>
+            
+            <optgroup label="Blue">
+                <option>Biru Dongker</option>
+                <option>Biru Laut</option>
+            </optgroup>
+
+            <optgroup label="Hijau">
+                <option>Hijau Daun</option>
+                <option>Hijau Tosca</option>
+            </optgroup>
+        </select>
+
+        <input class="btn btn-primary btn-block mt-3" type="button" value="Tekan aku">
+        <input class="btn btn-outline-primary btn-block" type="button" value="Tekan aku">
+    </form>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <div style="margin-top: 900px;" ></div>
+</body>
+</html>
