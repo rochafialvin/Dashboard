@@ -11,14 +11,25 @@ app = Flask(__name__)
 def index():
     return '<h1> Hello Flask ~ </h1>'
 
-@app.route('/base')
-def base():
-    return render_template('base.html')
+# Menerima data ketika ada request yang masuk
+@app.route('/base/<p_name>/<p_rain>')
+def base(p_name, p_rain):
+    name = p_name
+    rain = bool(p_rain)
+    todo = ['Running', 'Swimming', 'McD', 'Jumping', 'Hiking', 'KFC']
+
+    return render_template(
+        'base.html', 
+        name=name, 
+        mytodo=todo, 
+        condition=rain
+    )
+
 
 # Error Handling
 @app.errorhandler(404)
 def page_not_found(e):
-    return render_template('404.html')
+    return render_template('snap.html')
 
 
 
