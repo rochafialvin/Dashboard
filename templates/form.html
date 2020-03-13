@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% block form %}
+    <form action="">
+        <p>
+            Username : <input type="text" name="username">
+        </p>
+        
+        <p>
+            Password : <input type="password" name="password">
+        </p>
+
+        <p>
+            <select name="color" >
+                <option value="red">Red</option>
+                <option value="maroon">Maroon</option>
+                <option value="tosca">Tosca</option>
+            </select>
+        </p>
+
+        <input type="submit" value="Tekan aku">
+    </form>
+{% endblock  %}

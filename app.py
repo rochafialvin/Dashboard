@@ -14,8 +14,10 @@ def index():
 # Menerima data ketika ada request yang masuk
 @app.route('/base/<p_name>/<p_rain>')
 def base(p_name, p_rain):
+
     name = p_name
-    rain = bool(p_rain)
+    rain = p_rain == 'True'
+
     todo = ['Running', 'Swimming', 'McD', 'Jumping', 'Hiking', 'KFC']
 
     return render_template(
@@ -25,6 +27,9 @@ def base(p_name, p_rain):
         condition=rain
     )
 
+@app.route('/form')
+def form():
+    return render_template('form.html')
 
 # Error Handling
 @app.errorhandler(404)
