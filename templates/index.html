@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+    <link rel="stylesheet" href="../static/bootstrap.css">
+</head>
+<body>
+    <h1 class="text-center display-4 my-5">Tips Dashboard</h1>
+
+    <div class="container">
+        <form action="">
+            <div class="row d-flex justify-content-around" >
+                <!-- Model Plot -->
+                <select class="col-2 form-control" name="cat_plot">
+                    <option value="histoplot">Histogram</option>
+                    <option value="boxplot">Box</option>
+                </select>
+        
+                <!-- Sumbu X -->
+                <select class="col-2 form-control" name="cat_x" >
+                    <option value="sex">Sex</option>
+                    <option value="smoker">Smoker</option>
+                    <option value="day">Day</option>
+                    <option value="time">Time</option>
+                </select>
+        
+                <!-- Sumbu Y -->
+                <select class="col-2 form-control" name="cat_y">
+                    <option value="total_bill">Total Bill</option>
+                    <option value="tip">Tip</option>
+                    <option value="size">Size</option>
+                </select>
+        
+                <!-- Estimator -->
+                <select class="col-2 form-control" name="estimator">
+                    <option value="count">Count</option>
+                    <option value="sum">Sum</option>
+                    <option value="avg">Average</option>
+                    <option value="min">Minimum</option>
+                    <option value="max">Maximum</option>
+                </select>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
