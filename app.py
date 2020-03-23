@@ -31,6 +31,18 @@ def base(p_name, p_rain):
 def form():
     return render_template('form.html')
 
+@app.route('/registration')
+def registration():
+    username = request.args.get('username')
+    password = request.args.get('password')
+    color = request.args.get('color')
+
+    print('Username ', username)
+    print('Password ', password)
+    print('Color ', color)
+
+    return render_template('registration.html', uname = username)
+
 # Error Handling
 @app.errorhandler(404)
 def page_not_found(e):

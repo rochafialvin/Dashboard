@@ -9,18 +9,21 @@
     <!-- Menerima variable 'name' dari API -->
     <h1>Hello, my name is {{name}}</h1>
     
+    <!-- Menentukan hujan atau tidak -->
     {% if condition == True %}
         <h3>Today is raining</h3>
     {% else %}
         <h3>Today is not raining</h3>
     {% endif %}
 
+    <!-- Menampilkan list todo -->
     <ul>
         {% for todo in mytodo %}
             <li>{{todo}}</li>
         {% endfor %}
     </ul>
 
+    <!-- Menampilkan form -->
     {% block form %}
     
     {% endblock  %}

@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
+
 {% block form %}
-    <form action="">
+    <form action="{{ url_for('registration') }}">
         <p>
             Username : <input type="text" name="username">
         </p>
