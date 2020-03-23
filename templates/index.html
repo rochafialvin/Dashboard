@@ -5,11 +5,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DASHBOARD</title>
     <link rel="stylesheet" href="../static/bootstrap.css">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/3.5.6/d3.min.js"></script>
 </head>
 <body>
     <h1 class="text-center display-4 my-5">Tips Dashboard</h1>
 
     <div class="container">
+
+        <!-- Controller -->
         <form action="">
             <div class="row d-flex justify-content-around" >
                 <!-- Model Plot -->
@@ -43,6 +47,14 @@
                 </select>
             </div>
         </form>
+
+        <!-- Plot -->
+        <div class="chart" id="histogram">
+            <script>
+                var graphs = {{plot | safe}};
+                Plotly.plot('histogram',graphs,{});
+            </script>
+        </div>
     </div>
 
 </body>
