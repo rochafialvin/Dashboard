@@ -35,7 +35,14 @@ def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', e
 def index():
     plot = category_plot()
 
-    return render_template('category.html', plot=plot)
+    return render_template(
+        'category.html', 
+        plot=plot, 
+        focus_plot='histoplot', 
+        focus_x='sex', 
+        focus_y='total_bill', 
+        focus_estimator='count'
+    )
 
 @app.route('/cat_fn')
 def cat_fn():
@@ -46,7 +53,7 @@ def cat_fn():
 
     plot = category_plot(cat_plot, cat_x, cat_y, estimator)
 
-    return render_template('category.html', plot=plot)
+    return render_template('category.html', plot=plot, focus_plot=cat_plot, focus_x=cat_x, focus_y=cat_y, focus_estimator=estimator )
 
 if __name__ == '__main__':
     app.run(debug=True)

@@ -6,18 +6,41 @@
         <div class="row d-flex justify-content-around" >
             <!-- Model Plot -->
             <select class="col-2 form-control" name="cat_plot" onchange="form.submit()">
-                <option value="histoplot">Histogram</option>
-                <option value="boxplot">Box</option>
+                {% if focus_plot == 'histoplot' %}
+                    <option value="histoplot" selected='selected'>Histogram</option>
+                    <option value="boxplot">Box</option>
+                {% else %}
+                    <option value="histoplot">Histogram</option>
+                    <option value="boxplot" selected='selected'>Box</option>
+                {% endif %}
             </select>
 
             <!-- Sumbu X -->
             <select class="col-2 form-control" name="cat_x" onchange="form.submit()">
-                <option value="sex">Sex</option>
-                <option value="smoker">Smoker</option>
-                <option value="day">Day</option>
-                <option value="time">Time</option>
+                {% if focus_x == 'sex'%}
+                    <option value="sex" selected='selected'>Sex</option>
+                    <option value="smoker">Smoker</option>
+                    <option value="day">Day</option>
+                    <option value="time">Time</option>
+                {% elif focus_x == 'smoker' %}
+                    <option value="sex">Sex</option>
+                    <option value="smoker" selected='selected'>Smoker</option>
+                    <option value="day">Day</option>
+                    <option value="time">Time</option>
+                {% elif focus_x == 'day' %}
+                    <option value="sex">Sex</option>
+                    <option value="smoker" >Smoker</option>
+                    <option value="day" selected='selected'>Day</option>
+                    <option value="time">Time</option>
+                {% elif focus_x == 'time' %}
+                    <option value="sex">Sex</option>
+                    <option value="smoker">Smoker</option>
+                    <option value="day">Day</option>
+                    <option value="time" selected='selected'>Time</option>
+                {% endif %}
             </select>
 
+            
             <!-- Sumbu Y -->
             <select class="col-2 form-control" name="cat_y" onchange="form.submit()">
                 <option value="total_bill">Total Bill</option>
