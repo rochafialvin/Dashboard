@@ -13,48 +13,26 @@
 
     <div class="container">
 
-        <!-- Controller -->
-        <form action="">
-            <div class="row d-flex justify-content-around" >
-                <!-- Model Plot -->
-                <select class="col-2 form-control" name="cat_plot">
-                    <option value="histoplot">Histogram</option>
-                    <option value="boxplot">Box</option>
-                </select>
-        
-                <!-- Sumbu X -->
-                <select class="col-2 form-control" name="cat_x" >
-                    <option value="sex">Sex</option>
-                    <option value="smoker">Smoker</option>
-                    <option value="day">Day</option>
-                    <option value="time">Time</option>
-                </select>
-        
-                <!-- Sumbu Y -->
-                <select class="col-2 form-control" name="cat_y">
-                    <option value="total_bill">Total Bill</option>
-                    <option value="tip">Tip</option>
-                    <option value="size">Size</option>
-                </select>
-        
-                <!-- Estimator -->
-                <select class="col-2 form-control" name="estimator">
-                    <option value="count">Count</option>
-                    <option value="sum">Sum</option>
-                    <option value="avg">Average</option>
-                    <option value="min">Minimum</option>
-                    <option value="max">Maximum</option>
-                </select>
-            </div>
-        </form>
+        <!-- Navigasi -->
+        <ul class="my-4 nav nav-pills nav-fill">
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link text-dark lead" href="#">Histogram & Box</a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link text-dark lead" href="#">Scatter</a>
+            </li>
+            <li class="nav-item font-weight-bold">
+                <a class="nav-link text-dark lead" href="#">Pie</a>
+            </li>
+        </ul>
 
-        <!-- Plot -->
-        <div class="chart" id="histogram">
-            <script>
-                var graphs = {{plot | safe}};
-                Plotly.plot('histogram',graphs,{});
-            </script>
-        </div>
+        <!-- Content -->
+        {% block content %}
+
+        {% endblock %}
+
+
+
     </div>
 
 </body>
