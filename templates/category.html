@@ -59,39 +59,47 @@
             </select>
 
             <!-- Estimator -->
-            <select class="col-2 form-control" name="estimator" onchange="form.submit()">
-                {% if focus_estimator == 'count' %}
-                    <option value="count" selected='selected'>Count</option>
-                    <option value="sum">Sum</option>
-                    <option value="avg">Average</option>
-                    <option value="min">Minimum</option>
-                    <option value="max">Maximum</option>
-                {% elif focus_estimator == 'sum' %}
-                    <option value="count">Count</option>
-                    <option value="sum" selected='selected'>Sum</option>
-                    <option value="avg">Average</option>
-                    <option value="min">Minimum</option>
-                    <option value="max">Maximum</option>
-                {% elif focus_estimator == 'avg' %}
-                    <option value="count">Count</option>
-                    <option value="sum">Sum</option>
-                    <option value="avg" selected='selected'>Average</option>
-                    <option value="min">Minimum</option>
-                    <option value="max">Maximum</option>
-                {% elif focus_estimator == 'min' %}
-                    <option value="count">Count</option>
-                    <option value="sum">Sum</option>
-                    <option value="avg">Average</option>
-                    <option value="min" selected='selected'>Minimum</option>
-                    <option value="max">Maximum</option>
-                {% elif focus_estimator == 'max' %}
-                    <option value="count">Count</option>
-                    <option value="sum">Sum</option>
-                    <option value="avg">Average</option>
-                    <option value="min">Minimum</option>
-                    <option value="max" selected='selected'>Maximum</option>
-                {% endif %}
-            </select>
+            {% if focus_plot == 'boxplot' %}
+                <!-- disabled -->
+                <select class="col-2 form-control" name="estimator" disabled>
+                    <option value="disabled">Disabled</option>
+                </select>
+            {% else %}
+                <select class="col-2 form-control" name="estimator" onchange="form.submit()">
+                    {% if focus_estimator == 'count' %}
+                        <option value="count" selected='selected'>Count</option>
+                        <option value="sum">Sum</option>
+                        <option value="avg">Average</option>
+                        <option value="min">Minimum</option>
+                        <option value="max">Maximum</option>
+                    {% elif focus_estimator == 'sum' %}
+                        <option value="count">Count</option>
+                        <option value="sum" selected='selected'>Sum</option>
+                        <option value="avg">Average</option>
+                        <option value="min">Minimum</option>
+                        <option value="max">Maximum</option>
+                    {% elif focus_estimator == 'avg' %}
+                        <option value="count">Count</option>
+                        <option value="sum">Sum</option>
+                        <option value="avg" selected='selected'>Average</option>
+                        <option value="min">Minimum</option>
+                        <option value="max">Maximum</option>
+                    {% elif focus_estimator == 'min' %}
+                        <option value="count">Count</option>
+                        <option value="sum">Sum</option>
+                        <option value="avg">Average</option>
+                        <option value="min" selected='selected'>Minimum</option>
+                        <option value="max">Maximum</option>
+                    {% elif focus_estimator == 'max' %}
+                        <option value="count">Count</option>
+                        <option value="sum">Sum</option>
+                        <option value="avg">Average</option>
+                        <option value="min">Minimum</option>
+                        <option value="max" selected='selected'>Maximum</option>
+                    {% endif %}
+                </select>
+            
+            {% endif %}
         </div>
     </form>
 

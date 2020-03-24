@@ -10,16 +10,28 @@ def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', e
     
     dfTips = sb.load_dataset('tips')
 
-    data = [
-        go.Histogram(
-            x = dfTips[cat_x], # series
-            y = dfTips[cat_y], # series
-            histfunc=estimator
-        )
-    ]
+    if cat_plot == 'histoplot':
+        data = [
+            go.Histogram(
+                x = dfTips[cat_x], # series
+                y = dfTips[cat_y], # series
+                histfunc=estimator
+            )
+        ]
+
+        title = 'Histogram'
+    else :
+        data = [
+            go.Box(
+                x = dfTips[cat_x], # series
+                y = dfTips[cat_y], # series
+            )
+        ]
+
+        title = 'Box'
 
     layout = go.Layout(
-        title="Histogram",
+        title=title,
         title_x=0.5,
         xaxis={"title" : cat_x},
         yaxis=dict(title=cat_y)
@@ -50,6 +62,9 @@ def cat_fn():
     cat_x = request.args.get('cat_x')
     cat_y = request.args.get('cat_y')
     estimator = request.args.get('estimator')
+
+    if estimator == None:
+        estimator = 'count'
 
     plot = category_plot(cat_plot, cat_x, cat_y, estimator)
 
