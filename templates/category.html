@@ -2,16 +2,16 @@
 {% block content %}
 
     <!-- Controller -->
-    <form action="">
+    <form action="{{ url_for('cat_fn') }}" id='form'>
         <div class="row d-flex justify-content-around" >
             <!-- Model Plot -->
-            <select class="col-2 form-control" name="cat_plot">
+            <select class="col-2 form-control" name="cat_plot" onchange="form.submit()">
                 <option value="histoplot">Histogram</option>
                 <option value="boxplot">Box</option>
             </select>
 
             <!-- Sumbu X -->
-            <select class="col-2 form-control" name="cat_x" >
+            <select class="col-2 form-control" name="cat_x" onchange="form.submit()">
                 <option value="sex">Sex</option>
                 <option value="smoker">Smoker</option>
                 <option value="day">Day</option>
@@ -19,14 +19,14 @@
             </select>
 
             <!-- Sumbu Y -->
-            <select class="col-2 form-control" name="cat_y">
+            <select class="col-2 form-control" name="cat_y" onchange="form.submit()">
                 <option value="total_bill">Total Bill</option>
                 <option value="tip">Tip</option>
                 <option value="size">Size</option>
             </select>
 
             <!-- Estimator -->
-            <select class="col-2 form-control" name="estimator">
+            <select class="col-2 form-control" name="estimator" onchange="form.submit()">
                 <option value="count">Count</option>
                 <option value="sum">Sum</option>
                 <option value="avg">Average</option>
@@ -37,7 +37,7 @@
     </form>
 
     <!-- Plot -->
-    <div class="chart" id="plot">
+    <div class="chart mt-4" id="plot">
         <script>
             var graphs = {{plot | safe}};
             Plotly.plot('plot',graphs,{});

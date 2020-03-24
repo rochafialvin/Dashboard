@@ -39,8 +39,14 @@ def index():
 
 @app.route('/cat_fn')
 def cat_fn():
-    pass
+    cat_plot = request.args.get('cat_plot')
+    cat_x = request.args.get('cat_x')
+    cat_y = request.args.get('cat_y')
+    estimator = request.args.get('estimator')
 
+    plot = category_plot(cat_plot, cat_x, cat_y, estimator)
+
+    return render_template('category.html', plot=plot)
 
 if __name__ == '__main__':
     app.run(debug=True)
