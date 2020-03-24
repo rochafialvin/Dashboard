@@ -43,18 +43,54 @@
             
             <!-- Sumbu Y -->
             <select class="col-2 form-control" name="cat_y" onchange="form.submit()">
-                <option value="total_bill">Total Bill</option>
-                <option value="tip">Tip</option>
-                <option value="size">Size</option>
+                {% if focus_y == 'total_bill' %}
+                    <option value="total_bill" selected='selected'>Total Bill</option>
+                    <option value="tip">Tip</option>
+                    <option value="size">Size</option>
+                {% elif focus_y == 'tip' %}
+                    <option value="total_bill">Total Bill</option>
+                    <option value="tip" selected='selected'>Tip</option>
+                    <option value="size">Size</option>
+                {% elif focus_y == 'size' %}
+                    <option value="total_bill">Total Bill</option>
+                    <option value="tip">Tip</option>
+                    <option value="size" selected='selected'>Size</option>
+                {% endif %}
             </select>
 
             <!-- Estimator -->
             <select class="col-2 form-control" name="estimator" onchange="form.submit()">
-                <option value="count">Count</option>
-                <option value="sum">Sum</option>
-                <option value="avg">Average</option>
-                <option value="min">Minimum</option>
-                <option value="max">Maximum</option>
+                {% if focus_estimator == 'count' %}
+                    <option value="count" selected='selected'>Count</option>
+                    <option value="sum">Sum</option>
+                    <option value="avg">Average</option>
+                    <option value="min">Minimum</option>
+                    <option value="max">Maximum</option>
+                {% elif focus_estimator == 'sum' %}
+                    <option value="count">Count</option>
+                    <option value="sum" selected='selected'>Sum</option>
+                    <option value="avg">Average</option>
+                    <option value="min">Minimum</option>
+                    <option value="max">Maximum</option>
+                {% elif focus_estimator == 'avg' %}
+                    <option value="count">Count</option>
+                    <option value="sum">Sum</option>
+                    <option value="avg" selected='selected'>Average</option>
+                    <option value="min">Minimum</option>
+                    <option value="max">Maximum</option>
+                {% elif focus_estimator == 'min' %}
+                    <option value="count">Count</option>
+                    <option value="sum">Sum</option>
+                    <option value="avg">Average</option>
+                    <option value="min" selected='selected'>Minimum</option>
+                    <option value="max">Maximum</option>
+                {% elif focus_estimator == 'max' %}
+                    <option value="count">Count</option>
+                    <option value="sum">Sum</option>
+                    <option value="avg">Average</option>
+                    <option value="min">Minimum</option>
+                    <option value="max" selected='selected'>Maximum</option>
+                {% endif %}
             </select>
         </div>
     </form>
