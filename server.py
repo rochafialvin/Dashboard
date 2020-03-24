@@ -63,12 +63,28 @@ def cat_fn():
     cat_y = request.args.get('cat_y')
     estimator = request.args.get('estimator')
 
+    # Ketika kita klik menu 'Histogram & Box' di Navigasi
+    if cat_plot == None and cat_x == None and cat_y == None and estimator == None:
+        cat_plot = 'histoplot'
+        cat_x = 'sex'
+        cat_y = 'total_bill'
+        estimator = 'count'
+
+    # Ketika kita pindah dari boxplot (disabled) ke histogram
     if estimator == None:
         estimator = 'count'
 
     plot = category_plot(cat_plot, cat_x, cat_y, estimator)
 
     return render_template('category.html', plot=plot, focus_plot=cat_plot, focus_x=cat_x, focus_y=cat_y, focus_estimator=estimator )
+
+
+@app.route('/scatt_fn')
+def scatt_fn():
+    
+    return "<h1>Homework</h1>"
+
+
 
 if __name__ == '__main__':
     app.run(debug=True)
