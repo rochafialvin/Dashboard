@@ -2,11 +2,14 @@ from flask import Flask, render_template, request
 import seaborn as sb
 import plotly
 import plotly.graph_objs as go
+# Data dari flask di kirim ke browser dalam bentuk json
 import json
 
 app = Flask(__name__)
 
-# Histogram dan Box
+
+# HISTOGRAM & BOX
+
 def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', estimator = 'count'):
     
     dfTips = sb.load_dataset('tips')
@@ -44,33 +47,6 @@ def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', e
 
     return graphJSON
 
-# Scattter
-def scatter_plot(cat_x, cat_y):
-
-    dfTips = sb.load_dataset('tips')
-
-    data = [
-        go.Scatter(
-            x = dfTips[cat_x],
-            y = dfTips[cat_y],
-            mode = 'markers'
-        )
-    ]
-
-    layout = go.Layout(
-        title='Scatter',
-        title_x= 0.5,
-        xaxis = {"title" : cat_x},
-        yaxis = {"title" : cat_y}
-    )
-
-    final = {"data" : data, "layout" : layout}
-
-    graphJSON = json.dumps(final, cls=plotly.utils.PlotlyJSONEncoder)
-
-    return graphJSON
-
-
 @app.route('/')
 def index():
     plot = category_plot()
@@ -106,6 +82,40 @@ def cat_fn():
 
     return render_template('category.html', plot=plot, focus_plot=cat_plot, focus_x=cat_x, focus_y=cat_y, focus_estimator=estimator )
 
+
+# SCATTER
+
+def scatter_plot(cat_x, cat_y):
+    # sumber data
+    dfTips = sb.load_dataset('tips')
+
+    # membuat plot, nama variable tidak harus 'data'
+    data_source = [
+        go.Scatter(
+            x = dfTips[cat_x],
+            y = dfTips[cat_y],
+            mode = 'markers'
+        )
+    ]
+
+    # membuat layout, nama variable tidak harus 'layout'
+    layout_source = go.Layout(
+        title='Scatter',
+        title_x= 0.5,
+        xaxis = {"title" : cat_x},
+        yaxis = {"title" : cat_y}
+    )
+
+    # Gabungkan antara plot dengan layout
+    # variable yang menyimpan dictionary tidak harus final
+    # dict harus memiliki key 'data' dan 'layout
+    final = {"data" : data_source, "layout" : layout_source}
+
+    # hasil json yang akan dikirim tidak harus menggunakan 'graphJSON'
+    graphJSON = json.dumps(final, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return graphJSON
+
 @app.route('/scatt_fn')
 def scatt_fn():
     # Memilih dari menu dropdown
@@ -120,7 +130,7 @@ def scatt_fn():
 
     plot = scatter_plot(cat_x, cat_y)
     
-    return render_template('scatter.html', plot=plot)
+    return render_template('scatter.html', plot=plot, focus_x=cat_x, focus_y=cat_y)
 
 
 
