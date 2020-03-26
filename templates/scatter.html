@@ -1,0 +1,32 @@
+{% extends 'index.html' %}
+{% block content %}
+    <form action="{{ url_for('scatt_fn') }}" id='form'>
+        <div class="row d-flex justify-content-around" >
+
+            <!-- Sumbu X -->
+            <select class="col-2 form-control" name="cat_x" onchange="form.submit()">
+                <option value="total_bill" selected='selected'>Total Bill</option>
+                <option value="tip">Tip</option>
+                <option value="size">Size</option>
+            </select>
+
+            
+            <!-- Sumbu Y -->
+            <select class="col-2 form-control" name="cat_y" onchange="form.submit()">
+                <option value="total_bill" selected='selected'>Total Bill</option>
+                <option value="tip">Tip</option>
+                <option value="size">Size</option>
+            </select>
+
+            
+        </div>
+    </form>
+
+    <!-- Plot -->
+    <div class="chart mt-4" id="plot">
+        <script>
+            var graphs = {{plot | safe}};
+            Plotly.plot('plot',graphs,{});
+        </script>
+    </div>
+{% endblock  %}
