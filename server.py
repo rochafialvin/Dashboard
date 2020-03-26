@@ -64,8 +64,8 @@ def index():
 def cat_fn():
     cat_plot = request.args.get('cat_plot')
     cat_x = request.args.get('cat_x')
-    cat_y = request.args.get('cat_y')
-    estimator = request.args.get('estimator')
+    cat_y = request.args.get('cat_y') # total_bill
+    estimator = request.args.get('estimator') # avg
 
     # Ketika kita klik menu 'Histogram & Box' di Navigasi
     if cat_plot == None and cat_x == None and cat_y == None and estimator == None:
@@ -80,6 +80,7 @@ def cat_fn():
 
     plot = category_plot(cat_plot, cat_x, cat_y, estimator)
 
+                                                                                            # total_bill
     return render_template('category.html', plot=plot, focus_plot=cat_plot, focus_x=cat_x, focus_y=cat_y, focus_estimator=estimator )
 
 
@@ -130,6 +131,7 @@ def scatt_fn():
 
     plot = scatter_plot(cat_x, cat_y)
     
+    # Kirim ke browser
     return render_template('scatter.html', plot=plot, focus_x=cat_x, focus_y=cat_y)
 
 
