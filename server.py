@@ -57,6 +57,7 @@ def index():
     list_plot = [('histoplot', 'Histogram'), ('boxplot', 'Box')]
     list_x = [('sex', 'Sex'), ('smoker', 'Smoker'), ('day', 'Day'), ('time', 'Time')]
     list_y = [('total_bill', 'Total Bill'), ('tip', 'Tip'), ('size', 'Size')]
+    list_estimator = [('count', 'Count'), ('sum', 'Sum'),('avg','Average'), ('min', 'Minimum'), ('max', 'Maximum')]
 
     return render_template(
         'category.html', 
@@ -67,8 +68,8 @@ def index():
         focus_estimator='count',
         drop_plot = list_plot,
         drop_x = list_x,
-        drop_y = list_y
-
+        drop_y = list_y,
+        drop_estimator = list_estimator
     )
 
 @app.route('/cat_fn')
@@ -95,6 +96,7 @@ def cat_fn():
     list_plot = [('histoplot', 'Histogram'), ('boxplot', 'Box')]
     list_x = [('sex', 'Sex'), ('smoker', 'Smoker'), ('day', 'Day'), ('time', 'Time')]
     list_y = [('total_bill', 'Total Bill'), ('tip', 'Tip'), ('size', 'Size')]
+    list_estimator = [('count', 'Count'), ('sum', 'Sum'),('avg','Average'), ('min', 'Minimum'), ('max', 'Maximum')]
                                                                                             
     return render_template(
         'category.html', 
@@ -105,7 +107,8 @@ def cat_fn():
         focus_estimator=estimator,
         drop_plot = list_plot,
         drop_x = list_x,
-        drop_y = list_y
+        drop_y = list_y,
+        drop_estimator = list_estimator
     )
 
 

@@ -46,37 +46,13 @@
                 </select>
             {% else %}
                 <select class="col-2 form-control" name="estimator" onchange="form.submit()">
-                    {% if focus_estimator == 'count' %}
-                        <option value="count" selected>Count</option>
-                        <option value="sum">Sum</option>
-                        <option value="avg">Mean</option>
-                        <option value="min">Minimum</option>
-                        <option value="max">Maximum</option>
-                    {% elif focus_estimator == 'sum' %}
-                        <option value="count">Count</option>
-                        <option value="sum" selected>Sum</option>
-                        <option value="avg">Mean</option>
-                        <option value="min">Minimum</option>
-                        <option value="max">Maximum</option>
-                    {% elif focus_estimator == 'avg' %}
-                        <option value="count">Count</option>
-                        <option value="sum">Sum</option>
-                        <option value="avg" selected>Mean</option>
-                        <option value="min">Minimum</option>
-                        <option value="max">Maximum</option>
-                    {% elif focus_estimator == 'min' %}
-                        <option value="count">Count</option>
-                        <option value="sum">Sum</option>
-                        <option value="avg">Mean</option>
-                        <option value="min" selected>Minimum</option>
-                        <option value="max">Maximum</option>
-                    {% elif focus_estimator == 'max' %}
-                        <option value="count">Count</option>
-                        <option value="sum">Sum</option>
-                        <option value="avg">Mean</option>
-                        <option value="min">Minimum</option>
-                        <option value="max" selected>Maximum</option>
-                    {% endif %}
+                    {% for drop in drop_estimator %}
+                        {% if drop[0] == focus_estimator %}
+                            <option value={{drop[0]}} selected>{{drop[1]}}</option>
+                        {% else %}
+                            <option value={{drop[0]}} >{{drop[1]}}</option>
+                        {% endif %}
+                    {% endfor %}
                 </select>
             
             {% endif %}
