@@ -6,56 +6,36 @@
         <div class="row d-flex justify-content-around" >
             <!-- Model Plot -->
             <select class="col-2 form-control" name="cat_plot" onchange="form.submit()">
-                {% if focus_plot == 'histoplot' %}
-                    <option value="histoplot" selected>Histogram</option>
-                    <option value="boxplot">Box</option>
-                {% else %}
-                    <option value="histoplot">Histogram</option>
-                    <option value="boxplot" selected>Box</option>
-                {% endif %}
+                {% for drop in drop_plot %}
+                    {% if drop[0] == focus_plot %}
+                        <option value={{drop[0]}} selected>{{drop[1]}}</option>
+                    {% else %}
+                        <option value={{drop[0]}} >{{drop[1]}}</option>
+                    {% endif %}
+                {% endfor %}
             </select>
 
             <!-- Sumbu X -->
             <select class="col-2 form-control" name="cat_x" onchange="form.submit()">
-                {% if focus_x == 'sex'%}
-                    <option value="sex" selected>Sex</option>
-                    <option value="smoker">Smoker</option>
-                    <option value="day">Day</option>
-                    <option value="time">Time</option>
-                {% elif focus_x == 'smoker' %}
-                    <option value="sex">Sex</option>
-                    <option value="smoker" selected>Smoker</option>
-                    <option value="day">Day</option>
-                    <option value="time">Time</option>
-                {% elif focus_x == 'day' %}
-                    <option value="sex">Sex</option>
-                    <option value="smoker" >Smoker</option>
-                    <option value="day" selected>Day</option>
-                    <option value="time">Time</option>
-                {% elif focus_x == 'time' %}
-                    <option value="sex">Sex</option>
-                    <option value="smoker">Smoker</option>
-                    <option value="day">Day</option>
-                    <option value="time" selected>Time</option>
-                {% endif %}
+                {% for drop in drop_x %}
+                    {% if drop[0] == focus_x %}
+                        <option value={{drop[0]}} selected>{{drop[1]}}</option>
+                    {% else %}
+                        <option value={{drop[0]}} >{{drop[1]}}</option>
+                    {% endif %}
+                {% endfor %}
             </select>
 
             
             <!-- Sumbu Y -->
             <select class="col-2 form-control" name="cat_y" onchange="form.submit()">
-                {% if focus_y == 'total_bill' %}
-                    <option value="total_bill" selected>Total Bill</option>
-                    <option value="tip">Tip</option>
-                    <option value="size">Size</option>
-                {% elif focus_y == 'tip' %}
-                    <option value="total_bill">Total Bill</option>
-                    <option value="tip" selected>Tip</option>
-                    <option value="size">Size</option>
-                {% elif focus_y == 'size' %}
-                    <option value="total_bill">Total Bill</option>
-                    <option value="tip">Tip</option>
-                    <option value="size" selected>Size</option>
-                {% endif %}
+                {% for drop in drop_y %}
+                    {% if drop[0] == focus_y %}
+                        <option value={{drop[0]}} selected>{{drop[1]}}</option>
+                    {% else %}
+                        <option value={{drop[0]}} >{{drop[1]}}</option>
+                    {% endif %}
+                {% endfor %}
             </select>
 
             <!-- Estimator -->
@@ -69,31 +49,31 @@
                     {% if focus_estimator == 'count' %}
                         <option value="count" selected>Count</option>
                         <option value="sum">Sum</option>
-                        <option value="avg">Average</option>
+                        <option value="avg">Mean</option>
                         <option value="min">Minimum</option>
                         <option value="max">Maximum</option>
                     {% elif focus_estimator == 'sum' %}
                         <option value="count">Count</option>
                         <option value="sum" selected>Sum</option>
-                        <option value="avg">Average</option>
+                        <option value="avg">Mean</option>
                         <option value="min">Minimum</option>
                         <option value="max">Maximum</option>
                     {% elif focus_estimator == 'avg' %}
                         <option value="count">Count</option>
                         <option value="sum">Sum</option>
-                        <option value="avg" selected>Average</option>
+                        <option value="avg" selected>Mean</option>
                         <option value="min">Minimum</option>
                         <option value="max">Maximum</option>
                     {% elif focus_estimator == 'min' %}
                         <option value="count">Count</option>
                         <option value="sum">Sum</option>
-                        <option value="avg">Average</option>
+                        <option value="avg">Mean</option>
                         <option value="min" selected>Minimum</option>
                         <option value="max">Maximum</option>
                     {% elif focus_estimator == 'max' %}
                         <option value="count">Count</option>
                         <option value="sum">Sum</option>
-                        <option value="avg">Average</option>
+                        <option value="avg">Mean</option>
                         <option value="min">Minimum</option>
                         <option value="max" selected>Maximum</option>
                     {% endif %}
