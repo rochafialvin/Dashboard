@@ -1,0 +1,41 @@
+{% extends 'index.html' %}
+{% block content %}
+    <form action="{{ url_for('pie_fn') }}" id='form'>
+        <div class="row d-flex justify-content-around" >
+
+            <!-- Hue -->
+            <select class="col-2 form-control" name="hue" onchange="form.submit()">
+                {% if focus_hue == 'sex'%}
+                    <option value="sex" selected>Sex</option>
+                    <option value="smoker">Smoker</option>
+                    <option value="day">Day</option>
+                    <option value="time">Time</option>
+                {% elif focus_hue == 'smoker' %}
+                    <option value="sex">Sex</option>
+                    <option value="smoker" selected>Smoker</option>
+                    <option value="day">Day</option>
+                    <option value="time">Time</option>
+                {% elif focus_hue == 'day' %}
+                    <option value="sex">Sex</option>
+                    <option value="smoker" >Smoker</option>
+                    <option value="day" selected>Day</option>
+                    <option value="time">Time</option>
+                {% elif focus_hue == 'time' %}
+                    <option value="sex">Sex</option>
+                    <option value="smoker">Smoker</option>
+                    <option value="day">Day</option>
+                    <option value="time" selected>Time</option>
+                {% endif %}
+            </select>
+
+        </div>
+    </form>
+
+    <!-- Plot -->
+    <div class="chart mt-4" id="plot">
+        <script>
+            var graphs = {{plot | safe}};
+            Plotly.plot('plot',graphs,{});
+        </script>
+    </div>
+{% endblock  %}

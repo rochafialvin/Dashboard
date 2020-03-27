@@ -7,13 +7,15 @@ import json
 
 app = Flask(__name__)
 
+# Sumber data
+dfTips = sb.load_dataset('tips')
 
-# HISTOGRAM & BOX
+# # # # # # # # # #
+# HISTOGRAM & BOX #
+# # # # # # # # # #
 
-def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', estimator = 'count'):
+def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', estimator ='count'):
     
-    dfTips = sb.load_dataset('tips')
-
     if cat_plot == 'histoplot':
         data = [
             go.Histogram(
@@ -84,11 +86,11 @@ def cat_fn():
     return render_template('category.html', plot=plot, focus_plot=cat_plot, focus_x=cat_x, focus_y=cat_y, focus_estimator=estimator )
 
 
-# SCATTER
+# # # # # #
+# SCATTER # 
+# # # # # #
 
 def scatter_plot(cat_x, cat_y):
-    # sumber data
-    dfTips = sb.load_dataset('tips')
 
     # membuat plot, nama variable tidak harus 'data'
     data_source = [
@@ -134,6 +136,53 @@ def scatt_fn():
     # Kirim ke browser
     return render_template('scatter.html', plot=plot, focus_x=cat_x, focus_y=cat_y)
 
+
+# # # #
+# PIE #
+# # # #
+
+def pie_plot(hue):
+
+    # result : list of tupple dari penghitungan banyak data secara unique 
+    result = dfTips[hue].value_counts()
+
+    labels_source = []
+    values_source = []
+
+    for item in result.iteritems():
+        labels_source.append(item[0])
+        values_source.append(item[1])
+
+    data_source = [
+        go.Pie(
+            labels=labels_source,
+            values=values_source
+        )
+    ]
+
+    layout_source = go.Layout(
+        title='Pie',
+        title_x=0.5
+    )
+
+    final = {"data" : data_source, "layout" : layout_source}
+
+    # hasil json yang akan dikirim tidak harus menggunakan 'graphJSON'
+    graphJSON = json.dumps(final, cls=plotly.utils.PlotlyJSONEncoder)
+
+    return graphJSON
+
+@app.route('/pie_fn')
+def pie_fn():
+    hue_source = request.args.get('hue')
+
+    # Saat diakses melalui link, hue_sorce akan bernilai None
+    if hue_source == None:
+        hue_source = 'sex'
+
+    plot_source = pie_plot(hue_source)
+
+    return render_template('pie.html', plot=plot_source, focus_hue=hue_source)
 
 
 if __name__ == '__main__':
