@@ -14,25 +14,33 @@ dfTips = sb.load_dataset('tips')
 # HISTOGRAM & BOX #
 # # # # # # # # # #
 
-def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', estimator ='count'):
+def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', estimator ='count', hue='smoker'):
     
     if cat_plot == 'histoplot':
-        data = [
-            go.Histogram(
-                x = dfTips[cat_x], # series
-                y = dfTips[cat_y], # series
-                histfunc=estimator
-            )
-        ]
+        data = []
+
+        for val in dfTips[hue].unique(): # [No, Yes]
+            hist = go.Histogram(
+                        x = dfTips[dfTips[hue] == val ][cat_x],
+                        y = dfTips[dfTips[hue] == val ][cat_y],
+                        histfunc=estimator,
+                        name= val
+                    )
+            
+            data.append(hist)
 
         title = 'Histogram'
     else :
-        data = [
-            go.Box(
-                x = dfTips[cat_x], # series
-                y = dfTips[cat_y], # series
-            )
-        ]
+        data = []
+
+        for val in dfTips[hue].unique(): # [No, Yes]
+            hist = go.Box(
+                        x = dfTips[dfTips[hue] == val ][cat_x],
+                        y = dfTips[dfTips[hue] == val ][cat_y],
+                        name= val
+                    )
+            
+            data.append(hist)
 
         title = 'Box'
 
@@ -40,7 +48,8 @@ def category_plot(cat_plot = 'histoplot', cat_x = 'sex', cat_y = 'total_bill', e
         title=title,
         title_x=0.5,
         xaxis={"title" : cat_x},
-        yaxis=dict(title=cat_y)
+        yaxis=dict(title=cat_y),
+        boxmode='group'
     )
 
     final = {"data" : data, "layout" : layout}
@@ -69,28 +78,31 @@ def index():
         drop_plot = list_plot,
         drop_x = list_x,
         drop_y = list_y,
-        drop_estimator = list_estimator
+        drop_estimator = list_estimator,
+        drop_hue = list_x
     )
 
 @app.route('/cat_fn')
 def cat_fn():
-    cat_plot = request.args.get('cat_plot')
-    cat_x = request.args.get('cat_x')
+    cat_plot = request.args.get('cat_plot') # histoplot
+    cat_x = request.args.get('cat_x') # sex
     cat_y = request.args.get('cat_y') # total_bill
     estimator = request.args.get('estimator') # avg
+    hue = request.args.get('hue') # smoker
 
     # Ketika kita klik menu 'Histogram & Box' di Navigasi
-    if cat_plot == None and cat_x == None and cat_y == None and estimator == None:
+    if cat_plot == None and cat_x == None and cat_y == None and estimator == None and hue == None:
         cat_plot = 'histoplot'
         cat_x = 'sex'
         cat_y = 'total_bill'
         estimator = 'count'
+        hue = 'smoker'
 
     # Ketika kita pindah dari boxplot (disabled) ke histogram
     if estimator == None:
         estimator = 'count'
 
-    plot = category_plot(cat_plot, cat_x, cat_y, estimator)
+    plot = category_plot(cat_plot, cat_x, cat_y, estimator, hue)
 
     # list dropdown
     list_plot = [('histoplot', 'Histogram'), ('boxplot', 'Box')]
@@ -105,10 +117,12 @@ def cat_fn():
         focus_x=cat_x, 
         focus_y=cat_y, 
         focus_estimator=estimator,
+        focus_hue = hue,
         drop_plot = list_plot,
         drop_x = list_x,
         drop_y = list_y,
-        drop_estimator = list_estimator
+        drop_estimator = list_estimator,
+        drop_hue = list_x
     )
 
 

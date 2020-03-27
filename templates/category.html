@@ -54,8 +54,18 @@
                         {% endif %}
                     {% endfor %}
                 </select>
-            
             {% endif %}
+
+            <!-- Hue -->
+            <select class="col-2 form-control" name="hue" onchange="form.submit()">
+                {% for drop in drop_hue %}
+                    {% if drop[0] == focus_hue %}
+                        <option value={{drop[0]}} selected>{{drop[1]}}</option>
+                    {% else %}
+                        <option value={{drop[0]}} >{{drop[1]}}</option>
+                    {% endif %}
+                {% endfor %}
+            </select>
         </div>
     </form>
 
